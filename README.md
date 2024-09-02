@@ -8,20 +8,6 @@ Visualizar ayuda de git
 git help
 ```
 
-Visualizar el estatus del repositorio
-
-```bash
-git status
-```
-
-Este comando mostrará qué archivos no tienen seguimiento y cuales si para realizar commite
-
-Para visualizar el registro de los commits realizados en el proyecto
-
-```bash
-git log
-```
-
 ## Creación de proyecto
 
 Crear una copia de algún repositorio existente
@@ -90,7 +76,42 @@ git config --global -e
 :q!
 ```
 
+### CREAR ALIAS PARA COMANDOS
+
+Para crear un alias de los comandos de git
+
+```bash
+git config --global alias.<Nombre corto> <"Comando al que se le aplica el alias">
+```
+
+Ejemplo
+
+```bash
+git config --global alias.s "status --short"
+```
+Así se vería como se ejecuta el comando normalmente y el segundo cómo ahora se puede ejecutar con el alias
+
+```bash
+git status --short
+
+git s
+```
+
 ## COMANDOS MANEJO DE REPOSITORIO
+
+### SUBIR Y BAJAR ARCHIVOS AL STAGE
+
+Visualizar el estado de los arvchivos a los que ya le estamos dando seguimiento, cuales están ya en el ***stage*** y qué archivos tienen cambios y no se an subido al ***stage***
+
+```bash
+git status
+```
+
+Una visualización corta del estado
+
+```bash
+git status --short
+```
 
 Para subir un archivo al ***stage*** al que se le ha hecho un cambio y se le de seguimiento
 
@@ -104,12 +125,34 @@ Para subir todos los archivos con cambios al ***stage*** para que se les de segu
 git add .
 ```
 
+Para subir todos los arvchivos con una misma extensión al ***stage*** para que se les de seguimiento
+
+```bash
+git add *.<extensión>
+```
+
+Esto solo agregará los archivos dentro de la raíz del proyecto, si los archivos se encuentran dentro de una carpeta, hay que indicar la ruta donde se encuentran
+
+```bash
+git add carpeta/*.<extensión>
+```
+
+Si queremos añadir todos los archivos dentro de un mismo directorio (carpeta), junto con sus dierectorios
+
+```bash
+git add carpeta/
+```
+
+Cuando se agrega una carpeta vacía al proyecto, git no la gestiona, solo hasta que tiene contenido, por ejemplo la carpeta ***uploads***, en este caso, esa carpeta se ocupa para archivos que carga el usuario, por lo que en desarrollo puede estar vacía, en este caso para que Git la considere y la administre en el repositorio, hay que agregarle un archivo ***.gitkeep***, de esta forma la carpeta puede ser gestionada en el repositorio
+
 Si queremos remover un archivo que ya se haya cargado al ***stage*** para que no se considere en el commite
 
 ```bash
 git reset <nombre de archivo>
 ```
-    
+
+### COMMITS DE PROYECTO
+
 Para tomar imagen de los cambios en los archivos cargados en el ***stage***
 
 ```bash
@@ -122,6 +165,21 @@ Para regresar el proyecto a como estaba a como quedó en el último commit
 git checkout -- .
 ```
 
+Este comando mostrará qué archivos no tienen seguimiento y cuales si para realizar commite
+
+Para visualizar el registro de los commits realizados en el proyecto
+
+```bash
+git log
+```
+
+Para salir del Log
+
+```bash
+:q
+```
+
+### RAMAS DEL PROYECTO
 Para saber en qué rama estamos trabajando
 
 ```bash
