@@ -97,6 +97,14 @@ git status --short
 git s
 ```
 
+### ALGUNOS ALIAS RECOMENDADOS
+
+Alias para ***log*** del sistema
+
+```bash
+git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+```
+
 ## COMANDOS MANEJO DE REPOSITORIO
 
 ### SUBIR Y BAJAR ARCHIVOS AL STAGE
@@ -151,12 +159,44 @@ Si queremos remover un archivo que ya se haya cargado al ***stage*** para que no
 git reset <nombre de archivo>
 ```
 
+Para ver las diferencias que se tienen en los cambios ralizados hasta el momento con respecto al último commit, los cambios no tienen que estar cargados al ***stage***
+
+```bash
+git diff
+```
+
+Para que me muestre la diferencua cuando los cambios ya se cargaron al ***stage***
+
+```bash
+git diff --staged
+```
+
 ### COMMITS DE PROYECTO
 
 Para tomar imagen de los cambios en los archivos cargados en el ***stage***
 
 ```bash
 git commit -m "Nombre del commit"
+```
+
+si queremos agregar los cambios al commit saltandonos el subir al ***stage*** los cambios `git add .`, solo cuando son archivos que ya tienen seguimiento (solo tienen modificaciones y no son archivos nuevos)
+
+```bash
+git commit -am "Nombre del commit
+```
+
+Si el último ***commit*** escribimos el mensaje mal, lo podemos cambiar así. ***Este cambio no se recomienda si ya se realizó un*** `git push` al sistema, ya que puede originar un conflicto en el repositorio
+
+```bash
+git commit --amend -m "Mensaje corregido"
+```
+
+Si queremos agregar ultimos cambios realizados, dentro del último commit que se realizó anteriormente, el siguiente comando regresa el ultimo commit al ***stage*** para que se le iltegren los últimos cambios que se hicieron al proyecto. Si se deja solo el `HEAD^`, esto lo hará justo en el último ***commit*** realizado, si queremos uno o varios commits a trás del último, solo hay que especificar en el `HEAD^3` el número de posiciones a trás del último ***commit***. ***Este cambio no se recomienda si ya se realizó un*** `git push` al sistema, ya que puede originar un conflicto en el repositorio
+
+```bash
+git reset --soft HEAD^
+
+git reset --soft HEAD^2
 ```
 
 Para regresar el proyecto a como estaba a como quedó en el último commit
