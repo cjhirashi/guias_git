@@ -255,6 +255,16 @@ Para salir del Log
 :q
 ```
 
+## GIT IGNORE
+
+Para nosotros especificar al gestor de versiones que ignore algunas rutas o archivos, hay que crear una carpeta en la raiz de proyecto nombrada `.gitignore`, dentro de esta especificaremos que tantos elementos deberá ignora ***git***, un ejemplo de esto es lo siguiente
+
+```gitignore
+carpeta/
+
+*.
+```
+
 ### RAMAS DEL PROYECTO
 Para saber en qué rama estamos trabajando
 
