@@ -199,10 +199,46 @@ git reset --soft HEAD^
 git reset --soft HEAD^2
 ```
 
+Si queremos querémos agregar al stage un ***commit*** específico, entonces podremos realizar lo siguiente. ***Este cambio no se recomienda si ya se realizó un*** `git push` al sistema, ya que puede originar un conflicto en el repositorio. Para saber el *id del commit* solo hay que realizar un `git log`
+
+```bash
+git reset --soft <id del commit>
+```
+
+Si querémos regresar varios ***commits*** a trás, sin eliminar los cambios realizados después de ese ***commit***
+
+```bash
+git reset --mixed <id del commit>
+```
+
+Si querémos regresar varios ***commits*** a trás, eliminando todos los cambios realizados después de ese ***commit***
+
+```bash
+git reset --hard <id del commit>
+```
+
+Para recuperar todos los ***commits*** que eliminamos con alguna de las opciones antes mencionadas, podemos generar la referencia de todos los logs y movimientos que hemos realizado, con esto podemos hacer referencia a algún ***commit*** eliminado
+
+```bash
+git reflog
+```
+
 Para regresar el proyecto a como estaba a como quedó en el último commit
 
 ```bash
 git checkout -- .
+```
+
+Para renombrar un archivo o moverlo de directorio. Esta acción genera el cambio dentro del ***Stage***, para que sea efectivo el cambio, hay que realizar un ***commit***
+
+```Bash
+git mv <Nombre de archivo> <Nuevo nombre o ruta de archivo>
+```
+
+Para eliminar un archivo del proyecto. Esta acción genera el cambio dentro del ***Stage***, para que sea efectivo el cambio, hay que realizar un ***commit***
+
+```bash
+git rm <Nombre del archivo>
 ```
 
 Este comando mostrará qué archivos no tienen seguimiento y cuales si para realizar commite
