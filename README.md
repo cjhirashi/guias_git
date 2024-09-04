@@ -105,9 +105,7 @@ Alias para ***log*** del sistema
 git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 ```
 
-## COMANDOS MANEJO DE REPOSITORIO
-
-### SUBIR Y BAJAR ARCHIVOS AL STAGE
+## SUBIR Y BAJAR ARCHIVOS AL STAGE
 
 Visualizar el estado de los arvchivos a los que ya le estamos dando seguimiento, cuales están ya en el ***stage*** y qué archivos tienen cambios y no se an subido al ***stage***
 
@@ -171,7 +169,7 @@ Para que me muestre la diferencua cuando los cambios ya se cargaron al ***stage*
 git diff --staged
 ```
 
-### COMMITS DE PROYECTO
+## COMMITS DE PROYECTO
 
 Para tomar imagen de los cambios en los archivos cargados en el ***stage***
 
@@ -265,17 +263,98 @@ carpeta/
 *.
 ```
 
-### RAMAS DEL PROYECTO
+## RAMAS DEL PROYECTO
 Para saber en qué rama estamos trabajando
 
 ```bash
 git branch
 ```
 
+Para crear una rama, en el proyecto
+
+```bash
+git branch <Nombre de la rama>
+```
+
+Para movernos dentro de una rama
+
+```bash
+git checkout <Nombre de la rama>
+```
+
+Para crear una rama y con el mismo comando entrar a la rama nueva
+
+```bash
+git checkout -b <Nombre de la rama>
+```
+
 Para cambiar el nombre de una rama
 
 ```bash
 git branch -m <Nombre actual> <Nuevo nombre>
+```
+
+Eliminar una rama
+
+```bash
+git branch -d <Nombre de la rama>
+```
+
+Si por alguna razón al querér borrar una rama, el sistema me marca erro, si queremos forzar la eliminación
+
+```bash
+git branch -d <Nombre de la rama> -f
+```
+
+Para unir una rama con otra, primero hay que entrar a la rama donde quiero se apliquen los cambios, dentro de ella aplicamos el siguiente comando, pero mencionando de qué rama traeremos los cambios
+
+```bash
+git merge <Nombre de la rama de donde se traerán los cambios>
+```
+Al realizar un ***merge***, podemos obtener 3 tipos de respuesta
+
+> 1. **Fast-forward** - Este indica que no encontro cambios en los archivos que va a modificar la rama de referecia, entonces los cambios se pudieron aplicar sin ningún problema
+> 2. **recursive** - Esto indica que hay cambios en los mismos archivos en ambas ramas, pero que pudo unir ambos cambios sin conflictos
+> 3. **CONFLICT** - Esto indica que encontró un conflicto para unir las ramas, por lo que no puede realizar una unión automáticamente, tiene que realizarce de forma manual y mostrará los archivos de conflicto
+
+## ETIQUETAS (TAGS)
+
+Las etiquetas sirver para marcar un punto dentro de nuestro desarrollo dentro de la rama en la que estemos trabajando, este puede ser utilizado para marcar las versiones de desarrollo del sistema.
+
+Para desplegar una lista de los ***tags*** existentes
+
+```bash
+git tag
+```
+
+Para crear un ***tag*** en el proyecto
+
+```bash
+git tag <Nombre del tag>
+```
+
+Para crear un ***tag*** con anotaciones se escribe lo siguiente
+
+```bash
+git tag -a <Nombre del tag> -m "Mensaje"
+```
+
+Para crear un ***tag*** en un ***commit*** en específico
+
+```bash
+git tag -a <Nombre del tag> <id del commit> -m "Mensaje"
+```
+
+Para visualizar información del proyecto en el punto marcado por el tag, así como el mensaje cargado
+
+```bash
+git show <Nombre del tag>
+```
+
+Para eliminar un ***tag***
+
+```bash
+git tag -d <Nombre del tag>
 ```
 
 Para enlazar el proyecto de git al repositorio en github, hay que crear un repositorio primero, al crear este repositorio, nos
