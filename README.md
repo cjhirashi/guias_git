@@ -345,7 +345,7 @@ Para crear un ***tag*** en un ***commit*** en específico
 git tag -a <Nombre del tag> <id del commit> -m "Mensaje"
 ```
 
-Para visualizar información del proyecto en el punto marcado por el tag, así como el mensaje cargado
+Para visualizar información del proyecto en el punto marcado por el ***tag***, así como el mensaje cargado
 
 ```bash
 git show <Nombre del tag>
@@ -355,6 +355,64 @@ Para eliminar un ***tag***
 
 ```bash
 git tag -d <Nombre del tag>
+```
+
+## STAGE
+
+Esto nos sirve para almacenar cambios que aun no están probados como para hacerles un ***commit***, ya que podemos requerir regresar al estado del último ***commit*** para desplegar la aplicación, de esta forma no perdemos el trabajo realizado y que no se respaldó porque aun no lo tenemos listo.
+
+Para almacenar las modificaciones que aun no se han completado
+
+```bash
+git stash
+```
+
+Si queremos generar un ***stash*** con una descripción de lo que se está guardando
+
+```bash
+git stash save "Descripción del stage"
+```
+
+Aunque no se recomienda, podemos tener más de un ***stash*** cargado, para pode visualizarlos
+
+```bash
+git stash list
+```
+
+Si queremos enlistar los ***stash*** que se encuentran activos con más detalles
+
+```bash
+git stash list --stat
+```
+
+Si queremos recuperar el trabajo que dejamos cargado en el último ***stash***
+
+```bash
+git stash pop
+```
+
+Si queremos recuperar el trabajo de un ***stash*** en especifico en caso de existir varios
+
+```bash
+git stash apply stash{<Numero de Stage>}
+```
+
+Si queremos verificar qué cambios se tienen guadados en un ***stash***
+
+```bash
+git stash show stash{<Numero de Stage>}
+```
+
+Para borrar el ***stash*** sin que me traiga ya los cambios almacenados
+
+```bash
+git stash clear
+```
+
+Borrar un ***stash*** en específico en caso de haber generado varioas
+
+```bash
+git stash drop stash{<Numero de Stage>}
 ```
 
 Para enlazar el proyecto de git al repositorio en github, hay que crear un repositorio primero, al crear este repositorio, nos
