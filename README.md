@@ -431,3 +431,9 @@ Para singronizar el proyecto de git con github ejecutar el siguiente comando
 ```bash
 git push
 ```
+
+Para sincronizar los tags de mi proyecto con el repositorio remoto
+
+```bash
+git push --tags
+```
