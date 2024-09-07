@@ -270,6 +270,14 @@ Para saber en qué rama estamos trabajando
 git branch
 ```
 
+Para saber qué ramas tenemos en el proyecto local y las que también podamos visualisar remotas, para esto primero tubimos que jalar las actualizaciones de la nube
+
+```bash
+git pull -a
+
+git branch --all
+```
+
 Para crear una rama, en el proyecto
 
 ```bash
@@ -436,4 +444,22 @@ Para sincronizar los tags de mi proyecto con el repositorio remoto
 
 ```bash
 git push --tags
+```
+
+Para traer todos los cambios que hay en el repositorio en la nube a nuestro proyecto local
+
+```bash
+git pull
+```
+
+Para taer todos los cambios y ramas nuevas que pueda tener el repositorio en la nube
+
+```bash
+git pull --all
+```
+
+Para realizar una limpieza de las ramas remotas que ya no existen en el repositorio en la nube
+
+```bash
+git remote prune origin
 ```
